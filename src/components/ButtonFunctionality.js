@@ -86,12 +86,22 @@ class ButtonFunctionality extends Component {
 		}
 	}
 
+	/*
+	@func: HANDLES RESET LOGIC
+	*/
+	resetClickHandler = () => {
+		this.props.reset();
+		this.stopSim();
+	}
+
 	render(){
 		return (
 			<div>
+			
 				<div>
 					<Button onClick={this.props.approxPi}>Click to add point</Button>
 				</div>
+
 				<div>
 					<Button primary onClick={this.runSim}>Simulate</Button>
 					<Input type="text" 
@@ -102,21 +112,27 @@ class ButtonFunctionality extends Component {
 						margin: "20px 0 20px 0"
 					}} />
 				</div>
+
 				<div style={{
 						margin: "0 0 20px 0"
 					}}>
 					<Button secondary onClick={this.stopSim} content={this.lockTextChange()}></Button>
-					<Button secondary onClick={this.props.reset}>Reset</Button>
+					<Button secondary onClick={this.resetClickHandler}>Reset</Button>
 				</div>
+
 				<div>
-				<Card centered>
-					<Card.Content>
-						<Card.Header>Speed: {this.state.speed}</Card.Header>
-						<Input type='range' min={1} max={3} value={this.state.speed} onChange={this.changeSpeed} />
-					</Card.Content>
-				</Card>
+					<Card centered>
+						<Card.Content>
+							<Card.Header>Speed: {this.state.speed}</Card.Header>
+							<Input type='range' 
+							min={1} max={3} 
+							value={this.state.speed} 
+							onChange={this.changeSpeed} />
+						</Card.Content>
+					</Card>
 					<br />
 				</div>
+
 			</div>
 		);
 	}
