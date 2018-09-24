@@ -49,7 +49,7 @@ class ButtonFunctionality extends Component {
 	}
 
 	/*
-	@func: PAUSES THE SIMULATION
+	@func: STOPS THE SIMULATION
 	@info: BUTTON NEEDS TO BE PRESSED AGAIN TO "UNLOCK" SIMULATION STATE
 	*/
 	stopSim = () => {
@@ -75,14 +75,14 @@ class ButtonFunctionality extends Component {
 	}
 
 	/*
-	@func: CHANGES TEXT CONTENT OF PAUSE BUTTON
+	@func: CHANGES TEXT CONTENT OF STOP BUTTON
 	*/
 	lockTextChange = () => {
 		let text;
 		if (this.state.isStopped) {
-			return text = 'Paused';
+			return text = 'Stopped';
 		} else {
-			return text = 'Pause';
+			return text = 'Stop';
 		}
 	}
 
@@ -97,7 +97,7 @@ class ButtonFunctionality extends Component {
 	render(){
 		return (
 			<div>
-			
+
 				<div>
 					<Button onClick={this.props.approxPi}>Click to add point</Button>
 				</div>
