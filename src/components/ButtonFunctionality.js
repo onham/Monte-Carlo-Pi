@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input, Rating, Card } from 'semantic-ui-react';
+import { Button, Input, Card } from 'semantic-ui-react';
 
 
 
@@ -13,7 +13,7 @@ class ButtonFunctionality extends Component {
 	   	isStopped: '',
 	   	inputValue: '',
 	   	readyToRerun: !this.props.cleared,
-	   	speed: 1
+	   	speed: 2
 	   }
 	}
 
@@ -25,7 +25,7 @@ class ButtonFunctionality extends Component {
 	   	return this.setState({
 	   		isStopped: true
 	   	})
-		} else if (this.state.isStopped == true || this.state.readyToRerun == false) {
+		} else if (this.state.isStopped === true || this.state.readyToRerun === false) {
 			return this.setState({
 				readyToRerun: true
 			});
@@ -41,11 +41,6 @@ class ButtonFunctionality extends Component {
 		this.setState({
 			inputValue: event.target.value
 		})
-		if (this.state.cleared){
-			this.setState({
-				inputValue: ''
-			})
-		}
 	}
 
 	/*
@@ -66,10 +61,9 @@ class ButtonFunctionality extends Component {
 		this.setState({
 			speed: event.target.value
 		});
-		if (this.state.speed == 2){
-			requestAnimationFrame(this.runSim);
-		} else if (this.state.speed == 3) {
-			requestAnimationFrame(this.runSim);
+		if (this.state.speed < 2){
+			cancelAnimationFrame(this.runSim);
+		} else if (this.state.speed > 2) {
 			requestAnimationFrame(this.runSim);
 		}
 	}
@@ -78,11 +72,10 @@ class ButtonFunctionality extends Component {
 	@func: CHANGES TEXT CONTENT OF STOP BUTTON
 	*/
 	lockTextChange = () => {
-		let text;
 		if (this.state.isStopped) {
-			return text = 'Stopped';
+			return 'Stopped';
 		} else {
-			return text = 'Stop';
+			return 'Stop';
 		}
 	}
 

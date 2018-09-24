@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Input } from 'semantic-ui-react';
 
 
 
@@ -17,7 +16,6 @@ class Visualization extends Component {
 	@info: ESTABLISHING THE CANVAS
 	*/
 	componentDidMount() {
-	  const canvas = this.canvas.current;
 	  const context = this.refs.canvas.getContext("2d");
 
 	  context.beginPath();
@@ -32,7 +30,7 @@ class Visualization extends Component {
 	@info: IF THE RESET VALUE IS TRUE THEN CLEAN THE POINTS AND REMOUNT THE COMPONENT
 	*/
 	componentDidUpdate() {
-		if (this.props.cleared == true) {
+		if (this.props.cleared === true) {
 			this.cleanCanvas();
 			this.componentDidMount();
 		} else {
@@ -45,7 +43,6 @@ class Visualization extends Component {
 	*/
 	paint() {
 		const { x, y } = this.props;
-		const canvas = this.canvas.current;
 		const context = this.refs.canvas.getContext("2d");
 		context.fillStyle = (Math.sqrt(x*x + y*y) < 1) ? 'green' : 'red' ;
 		context.fillRect((x*100)+99, (y*100)+99, 2, 2);
@@ -55,7 +52,6 @@ class Visualization extends Component {
 	@func: CLEANS THE POINTS FROM CANVAS
 	*/
 	cleanCanvas() {
-		const canvas = this.canvas.current;
 		const context = this.refs.canvas.getContext("2d");
 		context.clearRect(0,0,200,200);
 	}

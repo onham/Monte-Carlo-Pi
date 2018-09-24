@@ -3,7 +3,6 @@ import './App.css';
 import StatsBar from './components/StatsBar';
 import ButtonFunctionality from './components/ButtonFunctionality';
 import Visualization from './components/Visualization';
-import { Button, Input, Divider } from 'semantic-ui-react';
 
 
 
@@ -19,7 +18,7 @@ class App extends Component {
       insidePts: 0,
       totalPts: 0,
       pi: 0,
-      cleared: ''
+      isReset: ''
     }
   }
 
@@ -36,9 +35,6 @@ class App extends Component {
 
     if ((Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))) < r){
       _insidePts++;
-      this.setState({
-        insidePts: _insidePts
-      })
     }
 
     _totalPts++;
@@ -46,9 +42,10 @@ class App extends Component {
     this.setState({
       x,
       y,
+      insidePts: _insidePts,
       totalPts: _totalPts,
       pi: 4*(_insidePts/_totalPts),
-      cleared: false
+      isReset: false
     })
   }
 
@@ -60,7 +57,7 @@ class App extends Component {
       insidePts: 0,
       totalPts: 0,
       pi: 0,
-      cleared: true
+      isReset: true
     })
   }
 
@@ -80,18 +77,14 @@ class App extends Component {
           <ButtonFunctionality 
           approxPi={this.approxPi}
           reset={this.resetValues}
-          insidePts={this.state.insidePts} 
           totalPts={this.state.totalPts}
-          cleared={this.state.cleared} 
+          cleared={this.state.isReset} 
           />
 
           <Visualization width={200} height={200} 
           x={this.state.x} 
           y={this.state.y} 
-          insidePts={this.state.insidePts} 
-          totalPts={this.state.totalPts} 
-          pi={this.state.pi}
-          cleared={this.state.cleared}
+          cleared={this.state.isReset}
           />
 
         </div>
