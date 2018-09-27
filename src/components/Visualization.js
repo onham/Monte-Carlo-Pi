@@ -16,13 +16,13 @@ class Visualization extends Component {
 	@info: ESTABLISHING THE CANVAS
 	*/
 	componentDidMount() {
-	  const context = this.refs.canvas.getContext("2d");
+		const context = this.refs.canvas.getContext("2d");
 
-	  context.beginPath();
-	  context.moveTo(100, 200);
-	  context.lineTo(100, 100);
-	  context.arc(100, 100, 100, 0, 2 * Math.PI);
-	  context.stroke();
+		context.beginPath();
+		context.moveTo(100, 200);
+		context.lineTo(100, 100);
+		context.arc(100, 100, 100, 0, 2 * Math.PI);
+		context.stroke();
 	}
 
 	/*
